@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-de222222ployment  # اسم الـ Deployment
+spec:
+  replicas: 4  # عدد الـ Pods التي سيتم إنشاؤها
+  selector:
+    matchLabels:
+      app: nginx  # سيختار فقط الـ Pods التي تحتوي على هذا الـ label
+  template:
+    metadata:
+      labels:
+        app: nginx  # تخصيص label للـ Pods
+    spec:
+      containers:
+        - name: ubuntu
+          image: ubuntu:latest
+          command: [ "/bin/bash", "-c", "--" ]
+          args: [ "while true; do sleep 30; done;" ]
+

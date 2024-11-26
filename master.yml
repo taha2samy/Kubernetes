@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment  # اسم الـ Deployment
+spec:
+  replicas: 3  # عدد الـ Pods التي سيتم إنشاؤها
+  selector:
+    matchLabels:
+      app: nginx  # سيختار فقط الـ Pods التي تحتوي على هذا الـ label
+  template:
+    metadata:
+      labels:
+        app: nginx  # تخصيص label للـ Pods
+    spec:
+      containers:
+        - name: nginx-container  
+          image: nginx:latest 
+          ports:
+            - containerPort: 80 
